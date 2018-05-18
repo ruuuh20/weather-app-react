@@ -1,5 +1,5 @@
 import React from 'react';
-import Titles from './components/Titles'
+import Header from './components/Header'
 import Form from './components/Form'
 import Weather from './components/Weather'
 
@@ -47,17 +47,32 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
-      <Titles />
-      <Form getWeather={this.getWeather}/>
-      <Weather
-        temperature={this.state.temperature}
-        country= {this.state.country}
-        humidity= {this.state.humidity}
-        description= {this.state.description}
-        error= {this.state.error}
-      />
+      <div className="wrapper">
+        <div className="main">
+          <div className="container">
+            <div className="row">
+            <div className="col-md-3 title-container">
+              <Header />
+            </div>
+
+              <div className="col-sm-9 form-container">
+              <Form getWeather={this.getWeather} />
+                  <Weather
+                    temperature={this.state.temperature}
+                    humidity={this.state.humidity}
+                    city={this.state.city}
+                    country={this.state.country}
+                    description={this.state.description}
+                    error={this.state.error}
+                  />
+
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
+
     )
   }
 }
